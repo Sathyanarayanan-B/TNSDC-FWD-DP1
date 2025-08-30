@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sakthi | Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <!-- Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    * {margin:0;padding:0;box-sizing:border-box;}
+    body {font-family:'Poppins',sans-serif;background:#0d0d0d;color:#eee;line-height:1.7;}
+    a{text-decoration:none;color:inherit;}
+
+/* HAMBURGER */
+.hamburger {
+  display: none;
+  font-size: 1.8rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* MOBILE NAV */
+@media(max-width: 768px){
+  nav ul {
+    position: fixed;
+    top: 70px;
+    right: -100%;
+    width: 200px;
+    height: 100vh;
+    background: #111;
+    flex-direction: column;
+    gap: 25px;
+    padding: 40px 20px;
+    transition: 0.4s;
+  }
+  nav ul.active {
+    right: 0;
+  }
+  .hamburger {
+    display: block;
+  }
+}
+
+    /* HEADER */
+    header {
+      position:fixed;top:0;left:0;width:100%;
+      background:#111;
+      display:flex;justify-content:space-between;align-items:center;
+      padding:18px 12%;
+      box-shadow:0 4px 15px rgba(0,0,0,0.6);
+      z-index:1000;
+    }
+    header .logo {font-family:'Cinzel',serif;font-size:2rem;font-weight:600;color:#ff3b3b;letter-spacing:2px;}
+    nav ul {display:flex;gap:32px;list-style:none;}
+    nav ul li a {font-weight:500;font-size:1rem;transition:0.3s;color:#fff;}
+    nav ul li a:hover {color:#ff3b3b;}
+
+    /* SECTION */
+    section {padding:100px 12%;}
+    section h2 {text-align:center;margin-bottom:50px;font-size:2.4rem;font-family:'Cinzel',serif;color:#ff3b3b;}
+
+    /* HERO */
+    section.hero {min-height:100vh;display:flex;align-items:center;justify-content:center;gap:80px;background:#0d0d0d;}
+    .hero-text {max-width:500px;}
+    .hero-text h1 {font-size:2rem;color:#ff3b3b;margin-bottom:18px;}
+    .hero-text h2 {font-size:3rem;color:#ff3b3b;margin-bottom:18px;}
+    .hero-text h3 {font-size:1rem;color:#10e0cf;margin-bottom:18px;}
+    .hero-text p {font-size:1.15rem;margin-bottom:25px;color:#ccc;}
+    .btn {display:inline-block;padding:14px 35px;background:#ff3b3b;color:#fff;border-radius:35px;font-size:1.05rem;transition:.4s;box-shadow:0 5px 15px rgba(0,0,0,0.25);}
+    .btn:hover {background:#cc0000;transform:translateY(-4px);}
+    .hero-img {flex:1;text-align:center;}
+    .hero-img {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-img .blob {
+  position: relative;
+  background: #ff3b3b;  /* red blob background */
+  width: 350px;
+  height: 380px;
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(255, 59, 59, 0.5);
+  animation: blob-move 8s ease-in-out infinite;
+}
+
+.hero-img img {
+  width: 90%;
+  height: auto;
+  border-radius: 20px;
+  object-fit: cover;
+  z-index: 2;
+  position: relative;
+  border: 5px solid #0d0d0d;  /* black border */
+}
+
+/* blob animation */
+@keyframes blob-move {
+  0%, 100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  50% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+}
+.hero-img img {
+  width: 110%;   /* increase here */
+  height: auto;
+  border-radius: 20px;
+  object-fit: cover;
+  z-index: 2;
+  position: relative;
+  border: 5px solid #0d0d0d;
+}
+
+
+
+
+
+    /* SOCIAL ICONS */
+    .social-links {margin-top:25px;display:flex;gap:18px;}
+    .social-links a {
+      width:45px;height:45px;display:flex;align-items:center;justify-content:center;
+      border-radius:50%;background:rgba(255,59,59,0.15);
+      color:#ff3b3b;font-size:1.2rem;transition:.3s;box-shadow:0 4px 10px rgba(0,0,0,0.3);
+    }
+    .social-links a:hover {background:#ff3b3b;color:#fff;transform:translateY(-4px) scale(1.1);}
+
+    /* ABOUT */
+    .about p {max-width:750px;margin:auto;text-align:center;font-size:1.1rem;color:#ddd;}
+
+    /* CIRCULAR SKILLS */
+    .skills-container {display:flex;flex-wrap:wrap;justify-content:center;gap:40px;max-width:900px;margin:auto;}
+    .circle-skill {
+      width:150px;height:150px;border-radius:50%;
+      background:conic-gradient(#ff3b3b var(--percent), #333 var(--percent));
+      display:flex;align-items:center;justify-content:center;
+      font-weight:bold;color:#fff;flex-direction:column;
+      position:relative;
+      box-shadow:0 0 15px rgba(255,59,59,0.3);
+    }
+    .circle-skill span {position:absolute;font-size:1rem;color:#ccc;bottom:-30px;}
+
+    /* PROJECTS */
+    .project-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:35px;}
+    .project {background:#111;color:#eee;padding:30px;border-radius:18px;transition:.4s;box-shadow:0 6px 18px rgba(0,0,0,0.5);}
+    .project:hover {transform:translateY(-8px);box-shadow:0 6px 20px rgba(255,59,59,0.3);}
+    .project h3 {color:#ff3b3b;font-family:'Cinzel',serif;margin-bottom:10px;}
+
+    /* CONTACT */
+    form {max-width:600px;margin:auto;display:flex;flex-direction:column;gap:18px;}
+    input,textarea {padding:14px;border:1px solid #444;border-radius:10px;font-size:1rem;background:#1a1a1a;color:#fff;}
+    button {padding:16px;border:none;background:#ff3b3b;color:#fff;font-size:1.05rem;border-radius:35px;cursor:pointer;transition:.3s;}
+    button:hover {background:#cc0000;transform:translateY(-3px);}
+
+    /* FOOTER */
+    footer {background:#111;color:#aaa;text-align:center;padding:30px;font-size:.95rem;margin-top:60px;}
+
+    @media(max-width:1000px){
+      section.hero {flex-direction:column-reverse;text-align:center;gap:40px;}
+      .hero-img img {width:250px;height:260px;}
+      .social-links{justify-content:center;}
+    }
+   @media(max-width: 768px) {
+  .hero-img .blob {
+    width: 220px;
+    height: 240px;
+    padding: 0;              /* no gap inside blob */
+  }
+
+  .hero-img img {
+    width: 95%;             /* zoom effect */
+    border: none;            /* remove hard border */
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+<header>
+  <div class="logo">Sakthi</div>
+  <nav id="navbar">
+    <ul>
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <!-- HAMBURGER ICON -->
+  <div class="hamburger" id="hamburger">
+    <i class="fas fa-bars"></i>
+  </div>
+</header>
+
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-text">
+      <h1>Hello, its me </h1>
+      <h2>SATHYANARAYANAN</h2>
+      <p>Data Science Student | Aspiring Data Analyst<p>
+    
+      <a href="#projects" class="btn">Explore My Work</a>
+
+      <!-- SOCIAL LINKS -->
+      <div class="social-links">
+        <a href="https://github.com/Sathyanarayanan-B"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/sathyanarayanan-b-ba8285375?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.instagram.com/heyy_.sak?igsh=ZHRncjVmbmV6anZm"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="hero-img">
+      <div class="blob">
+      <img src="image1.jpg" alt="Sakthi Picture">
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <h2>About Me</h2>
+    <p>
+      I am a B.Sc Data Science student with a strong interest in Data Analytics.
+       I enjoy working with data to discover insights, <b style="color:#ff3b3b;">solve real-world problems, and support decision-making.</b> I am currently building my skills in <b style="color:#eee;">Python, SQL, and data visualization,</b>
+    </p>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="skills" id="skills">
+    <h2>My Skills</h2>
+    <div class="skills-container">
+      <div class="circle-skill" style="--percent:50%;">50% <span>Excel&DataVisualization</span></div>
+      <div class="circle-skill" style="--percent:50%;">50% <span>Python</span></div>
+      <div class="circle-skill" style="--percent:75%;">75% <span>html,css</span></div>
+      <div class="circle-skill" style="--percent:70%;">70% <span>comunication</span></div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="projects" id="projects">
+    <h2>Featured Projects</h2>
+    <div class="project-grid">
+      <div class="project"><h3>Portfolio Website</h3><p>creating my own portfolio Website</p></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <h2>Get In Touch</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+  <div class="contact-info">
+  <p>
+    <i class="fas fa-paper-plane"></i> sakthiyanara@gmail.com
+  </p>
+</div>
+<!-- FontAwesome Icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+<style>
+  .contact-info {
+    position: fixed;
+    bottom: 20px;   /* distance from bottom */
+    right: 20px;    /* distance from right */
+    background: #f04a52;  /* dark green */
+    padding: 15px 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(238, 5, 36, 0.3);
+    font-family: Arial, sans-serif;
+    z-index: 9999;  /* stays above everything */
+  }
+
+  .contact-info p {
+    margin: 6px 0;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+  }
+
+  .contact-info i {
+    color: #880606;  
+    margin-right: 10px;
+    font-size: 18px;
+  }
+
+  .contact-info a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+
+  .contact-info a:hover {
+    color: #7a0b1d;
+  }
+</style>
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Sathyanarayanan </p>
+  </footer>
+  <script>
+  const hamburger = document.getElementById('hamburger');
+  const navMenu = document.querySelector('nav ul');
+
+  hamburger.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+    hamburger.innerHTML = navMenu.classList.contains('active') 
+      ? '<i class="fas fa-times"></i>' 
+      : '<i class="fas fa-bars"></i>';
+  });
+
+  // Close menu when clicking a link
+  document.querySelectorAll('nav ul li a').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('active');
+      hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+    });
+  });
+</script>
+
+</body>
+</html>
